@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Camisetas AJ - Tu Tienda de Fútbol</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin-styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +34,7 @@
                     <li class="nav-item"><a href="#ligas" class="nav-link">Ligas</a></li>
                     <li class="nav-item"><a href="#productos" class="nav-link">Productos</a></li>
                     <li class="nav-item"><a href="#personalizar" class="nav-link">Personalizar</a></li>
-                    <li class="nav-item"><a href="#admin" class="nav-link admin-link"><i class="fas fa-lock"></i> Admin</a></li>
+                    <li class="nav-item"><a href="#admin" class="nav-link admin-link">Admin</a></li>
                 </ul>
                 <div class="hamburger">
                     <span class="bar"></span>
@@ -248,10 +249,6 @@
                         <div class="camiseta-numero" id="preview-numero">10</div>
                     </div>
                     <div class="controles">
-                        <select id="input-equipo">
-                            <option value="">Seleccionar equipo</option>
-                            <!-- Se llenarán dinámicamente con los equipos existentes -->
-                        </select>
                         <input type="text" placeholder="Nombre" id="input-nombre" maxlength="12">
                         <input type="number" placeholder="Número" id="input-numero" min="1" max="99">
                         <select id="input-talla">
@@ -309,7 +306,6 @@
                                     <option value="chandales">Chándales</option>
                                     <option value="ninos">Niños</option>
                                 </select>
-                                <button type="button" class="btn-rounded btn-add" onclick="mostrarCrearCategoria()">+ Nueva Categoría</button>
                             </div>
                             <div class="form-group">
                                 <label>Equipo:</label>
@@ -346,15 +342,6 @@
                                 <div class="liga-actions">
                                     <button type="button" class="btn-rounded btn-success" onclick="crearNuevaLiga()">Crear</button>
                                     <button type="button" class="btn-rounded btn-cancel" onclick="cancelarCrearLiga()">Cancelar</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group" id="nueva-categoria-group" style="display: none;">
-                            <div class="nueva-categoria-form">
-                                <input type="text" id="nueva-categoria-nombre" placeholder="Nombre de la categoría" class="form-control">
-                                <div class="categoria-actions">
-                                    <button type="button" class="btn-rounded btn-success" onclick="crearNuevaCategoria()">Crear</button>
-                                    <button type="button" class="btn-rounded btn-cancel" onclick="cancelarCrearCategoria()">Cancelar</button>
                                 </div>
                             </div>
                         </div>

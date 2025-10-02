@@ -1,0 +1,40 @@
+{
+  "productos": {
+    "camisetas": [
+      {
+        "id": 1,
+        "nombre": "FC Barcelona",
+        "precio": 45,
+        "liga": "laliga1",
+        "imagen": "images/barcelona-1.jpg",
+        "imagenes": ["images/barcelona-1.jpg", "images/barcelona-2.jpg"],
+        "categoria": "camisetas",
+        "fechaCreacion": "2025-01-01",
+        "precio_personalizado": false
+      },
+      {
+        "id": 2,
+        "nombre": "Real Madrid",
+        "precio": 45,
+        "liga": "laliga1",
+        "imagen": "images/real-madrid-1.jpg",
+        "imagenes": ["images/real-madrid-1.jpg", "images/real-madrid-2.jpg"],
+        "categoria": "camisetas",
+        "fechaCreacion": "2025-01-02",
+        "precio_personalizado": false
+      },
+      {
+        "id": 3,
+        "nombre": "Selecci\u00f3n Espa\u00f1ola",
+        "precio": 45,
+        "liga": "selecciones",
+        "imagen": "images/espana-1.jpg",
+        "imagenes": ["images/espana-1.jpg", "images/espana-2.jpg"],
+        "categoria": "camisetas",
+        "fechaCreacion": "2025-01-03",
+        "precio_personalizado": false
+      }
+    ]
+  },
+  "proximoId": 4
+}
