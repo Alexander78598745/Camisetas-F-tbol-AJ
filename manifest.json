@@ -1,0 +1,65 @@
+{
+    "name": "Camisetas AJ",
+    "short_name": "CamisetasAJ",
+    "description": "Tu tienda de camisetas de fútbol favorita",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1a1a1a",
+    "theme_color": "#FF0000",
+    "orientation": "portrait",
+    "scope": "/",
+    "lang": "es",
+    "categories": ["sports", "shopping"],
+    "icons": [
+        {
+            "src": "logo-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "logo-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Ver Catálogo",
+            "short_name": "Catálogo",
+            "description": "Ver todos los productos disponibles",
+            "url": "/#productos",
+            "icons": [
+                {
+                    "src": "logo-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Personalizar",
+            "short_name": "Personalizar",
+            "description": "Personalizar tu camiseta",
+            "url": "/#personalizar",
+            "icons": [
+                {
+                    "src": "logo-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Contactar WhatsApp",
+            "short_name": "WhatsApp",
+            "description": "Contactar por WhatsApp",
+            "url": "/#whatsapp",
+            "icons": [
+                {
+                    "src": "logo-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Persistencia de Precios - Camisetas AJ</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+            color: white;
+        }
+        .test-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .test-title {
+            color: #FFD700;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .critical {
+            background: rgba(255, 0, 0, 0.2);
+            border: 2px solid #ff4444;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .success {
+            background: rgba(0, 255, 0, 0.2);
+            border: 2px solid #44ff44;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .test-step {
+            margin: 10px 0;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #FFD700;
+            border-radius: 5px;
+        }
+        .test-step.important {
+            border-left-color: #ff4444;
+            background: rgba(255, 68, 68, 0.1);
+        }
+        .btn {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .highlight { color: #FFD700; font-weight: bold; }
+        .code {
+            background: rgba(0,0,0,0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="test-card">
+        <h1 class="test-title">🔧 Test Crítico: Persistencia de Precios</h1>
+        <div class="critical">
+            <h3><i class="fas fa-exclamation-triangle"></i> PROBLEMA SOLUCIONADO</h3>
+            <p><strong>Issue:</strong> Los precios editados se reseteaban automáticamente a 45€ al recargar</p>
+            <p><strong>Causa:</strong> Función <span class="code">aplicarConfiguracionApp()</span> sobrescribía precios editados</p>
+            <p><strong>Solución:</strong> Protección mediante banderas <span class="code">precio_personalizado</span> y <span class="code">editado_manualmente</span></p>
+        </div>
+    </div>
+
+    <div class="test-card">
+        <h2><i class="fas fa-edit"></i> Test de Edición de Precios</h2>
+        
+        <div class="test-step important">
+            <strong>🔍 PASO 1 - Verificar Estado Actual:</strong><br>
+            1. Abre <span class="highlight">index.html</span><br>
+            2. Ve al Admin (contraseña: <span class="code">admin123</span>)<br>
+            3. Anota los precios actuales de Barcelona y Real Madrid
+        </div>
+        
+        <div class="test-step important">
+            <strong>✏️ PASO 2 - Editar Precio:</strong><br>
+            1. Haz clic en "Editar" en el producto Barcelona<br>
+            2. Cambia el precio a <span class="highlight">52€</span><br>
+            3. Haz clic en "Guardar Cambios"<br>
+            4. Verifica que aparezca el modal "Cambios guardados exitosamente"
+        </div>
+        
+        <div class="test-step important">
+            <strong>🔄 PASO 3 - Test de Persistencia:</strong><br>
+            1. <strong>Recarga la página completamente</strong> (F5 o Ctrl+R)<br>
+            2. Ve al Admin nuevamente<br>
+            3. <strong>Verifica que Barcelona siga costando 52€</strong>
+        </div>
+        
+        <div class="test-step important">
+            <strong>🌐 PASO 4 - Test Extremo:</strong><br>
+            1. <strong>Cierra el navegador completamente</strong><br>
+            2. Abre de nuevo y ve al Admin<br>
+            3. <strong>Verifica que el precio siga siendo 52€</strong>
+        </div>
+        
+        <a href="index.html" class="btn">
+            <i class="fas fa-play"></i> Iniciar Test
+        </a>
+    </div>
+
+    <div class="test-card">
+        <h2><i class="fas fa-plus-circle"></i> Test de Productos Nuevos</h2>
+        
+        <div class="test-step">
+            <strong>📦 PASO 1 - Crear Producto:</strong><br>
+            1. Ve a "Subir Nuevos Productos"<br>
+            2. Crea un producto con precio personalizado (ej: 38€)<br>
+            3. Súbelo y verifica que aparezca
+        </div>
+        
+        <div class="test-step">
+            <strong>🔄 PASO 2 - Verificar Persistencia:</strong><br>
+            1. Recarga la página<br>
+            2. <strong>Verifica que el producto mantenga su precio de 38€</strong>
+        </div>
+    </div>
+
+    <div class="test-card">
+        <h2><i class="fas fa-shield-alt"></i> Protecciones Implementadas</h2>
+        
+        <div class="success">
+            <h4>🛡️ Banderas de Protección:</h4>
+            <ul>
+                <li><span class="code">precio_personalizado: true</span> - Marca productos editados</li>
+                <li><span class="code">editado_manualmente: true</span> - Protege contra sobrescritura automática</li>
+            </ul>
+        </div>
+        
+        <div class="test-step">
+            <strong>🔧 Función aplicarConfiguracionApp() Corregida:</strong><br>
+            Ahora SOLO actualiza precios de productos que NO han sido editados manualmente
+        </div>
+        
+        <div class="test-step">
+            <strong>💾 Función guardarCambiosProducto() Mejorada:</strong><br>
+            Marca automáticamente productos editados con las banderas de protección
+        </div>
+        
+        <div class="test-step">
+            <strong>🆕 Función subirProducto() Actualizada:</strong><br>
+            Productos nuevos se crean ya protegidos contra sobrescritura
+        </div>
+    </div>
+
+    <div class="test-card">
+        <h2><i class="fas fa-clipboard-check"></i> Checklist Final</h2>
+        
+        <div class="test-step">
+            <strong>✅ Resultados Esperados:</strong>
+            <ul>
+                <li>□ Productos editados mantienen precio después de F5</li>
+                <li>□ Productos editados mantienen precio después de cerrar navegador</li>
+                <li>□ Productos nuevos mantienen precio personalizado</li>
+                <li>□ Modal de confirmación aparece al guardar cambios</li>
+                <li>□ Sistema funciona normalmente para todas las demás operaciones</li>
+            </ul>
+        </div>
+        
+        <div class="critical">
+            <h4><i class="fas fa-check-circle"></i> SI TODOS LOS TESTS PASAN:</h4>
+            <p><strong>🎉 PROBLEMA COMPLETAMENTE SOLUCIONADO</strong></p>
+            <p>Los precios editados ahora se guardan <strong>PARA SIEMPRE</strong> ✅</p>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="index.html#admin" class="btn">
+                <i class="fas fa-rocket"></i> Ir Directo al Admin
+            </a>
+        </div>
+    </div>
+
+    <div class="test-card">
+        <h2><i class="fas fa-info-circle"></i> Detalles Técnicos</h2>
+        <div class="test-step">
+            <strong>📝 Cambios Realizados:</strong>
+            <ul>
+                <li><strong>script.js línea ~2000:</strong> Añadidas banderas en guardarCambiosProducto()</li>
+                <li><strong>script.js línea ~2670:</strong> Condición de protección en aplicarConfiguracionApp()</li>
+                <li><strong>script.js línea ~1100:</strong> Protección en productos nuevos en subirProducto()</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

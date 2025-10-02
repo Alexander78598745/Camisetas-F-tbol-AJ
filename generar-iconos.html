@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generador de Iconos PWA - Camisetas AJ</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+        }
+        .generator {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .icon-preview {
+            display: inline-block;
+            margin: 10px;
+            border: 2px solid #FF0000;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .download-btn {
+            background: #FF0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        canvas {
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="generator">
+        <h1>🎨 Generador de Iconos PWA</h1>
+        <p>Crea automáticamente los iconos necesarios para tu app</p>
+        
+        <div>
+            <input type="file" id="logoInput" accept="image/*" style="margin: 20px 0;">
+            <br>
+            <button onclick="generarIconos()" class="download-btn">Generar Iconos</button>
+        </div>
+        
+        <div id="iconos-generados"></div>
+        
+        <div style="margin-top: 30px;">
+            <h3>📋 Instrucciones:</h3>
+            <ol style="text-align: left; max-width: 400px; margin: 0 auto;">
+                <li>Selecciona tu logo (preferiblemente cuadrado)</li>
+                <li>Haz clic en "Generar Iconos"</li>
+                <li>Descarga los iconos generados</li>
+                <li>Guárdalos como "logo-192.png" y "logo-512.png"</li>
+                <li>Súbelos junto con tu web</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function generarIconos() {
+            const input = document.getElementById('logoInput');
+            const container = document.getElementById('iconos-generados');
+            
+            if (!input.files[0]) {
+                alert('Por favor selecciona un archivo primero');
+                return;
+            }
+            
+            const file = input.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const tamaños = [192, 512];
+                    container.innerHTML = '<h3>🖼️ Iconos Generados:</h3>';
+                    
+                    tamaños.forEach(tamaño => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = tamaño;
+                        canvas.height = tamaño;
+                        
+                        const ctx = canvas.getContext('2d');
+                        
+                        // Fondo blanco
+                        ctx.fillStyle = '#ffffff';
+                        ctx.fillRect(0, 0, tamaño, tamaño);
+                        
+                        // Calcular dimensiones para centrar la imagen
+                        const scale = Math.min(tamaño * 0.8 / img.width, tamaño * 0.8 / img.height);
+                        const width = img.width * scale;
+                        const height = img.height * scale;
+                        const x = (tamaño - width) / 2;
+                        const y = (tamaño - height) / 2;
+                        
+                        // Dibujar imagen
+                        ctx.drawImage(img, x, y, width, height);
+                        
+                        // Crear preview
+                        const preview = document.createElement('div');
+                        preview.className = 'icon-preview';
+                        preview.innerHTML = `
+                            <div>
+                                <img src="${canvas.toDataURL()}" width="100" height="100" style="display: block;">
+                                <button class="download-btn" onclick="descargarIcono(this, '${canvas.toDataURL()}', 'logo-${tamaño}.png')">
+                                    Descargar ${tamaño}x${tamaño}
+                                </button>
+                            </div>
+                        `;
+                        
+                        container.appendChild(preview);
+                    });
+                };
+                img.src = e.target.result;
+            };
+            
+            reader.readAsDataURL(file);
+        }
+        
+        function descargarIcono(btn, dataUrl, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = dataUrl;
+            link.click();
+            
+            btn.style.background = '#28a745';
+            btn.textContent = '✓ Descargado';
+            setTimeout(() => {
+                btn.style.background = '#FF0000';
+                btn.textContent = btn.textContent.replace('✓ Descargado', `Descargar ${filename.split('-')[1]}`);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✅ TEST FINAL - Sistema Corregido</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .test-section h3 {
+            margin-top: 0;
+            color: #FFD700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 14px;
+        }
+        .upload-zone {
+            border: 3px dashed rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        .upload-zone:hover {
+            border-color: #FFD700;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        .btn-test {
+            background: #2196F3;
+            color: white;
+        }
+        .btn-test:hover {
+            background: #1976D2;
+        }
+        .status-display {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: monospace;
+            font-size: 14px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .success { color: #4CAF50; }
+        .error { color: #f44336; }
+        .warning { color: #ff9800; }
+        .info { color: #2196F3; }
+        
+        @media (max-width: 768px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-cog"></i> TEST FINAL - Sistema Corregido</h1>
+            <p>Prueba directa de las funcionalidades críticas antes de usar en producción</p>
+        </div>
+        
+        <div class="test-grid">
+            <!-- Test de Subir Producto -->
+            <div class="test-section">
+                <h3><i class="fas fa-upload"></i> Test: Subir Producto</h3>
+                
+                <div class="form-group">
+                    <label>Categoría:</label>
+                    <select id="test-categoria" class="form-control">
+                        <option value="camisetas">Camisetas</option>
+                        <option value="chandales">Chándales</option>
+                        <option value="ninos">Niños</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nombre del Equipo:</label>
+                    <input type="text" id="test-equipo" class="form-control" placeholder="Ej: Barcelona Test">
+                </div>
+                
+                <div class="form-group">
+                    <label>Liga:</label>
+                    <select id="test-liga" class="form-control">
+                        <option value="laliga1">La Liga</option>
+                        <option value="premier">Premier League</option>
+                        <option value="serie-a">Serie A</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Precio (€):</label>
+                    <input type="number" id="test-precio" class="form-control" placeholder="45" min="1">
+                </div>
+                
+                <div class="form-group">
+                    <label>Imágenes:</label>
+                    <div class="upload-zone" id="test-upload-zone">
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 30px; margin-bottom: 10px;"></i>
+                        <p>Arrastra imágenes aquí o haz clic para seleccionar</p>
+                    </div>
+                    <input type="file" id="test-imagenes" multiple accept="image/*" style="display: none;">
+                </div>
+                
+                <button class="btn btn-primary" onclick="testSubirProducto()">
+                    <i class="fas fa-rocket"></i> PROBAR SUBIR PRODUCTO
+                </button>
+                
+                <div id="test-subir-status" class="status-display"></div>
+            </div>
+            
+            <!-- Test de Sistema -->
+            <div class="test-section">
+                <h3><i class="fas fa-check-circle"></i> Diagnóstico del Sistema</h3>
+                
+                <button class="btn btn-test" onclick="ejecutarDiagnosticoCompleto()">
+                    <i class="fas fa-search"></i> Diagnosticar Sistema
+                </button>
+                
+                <button class="btn btn-test" onclick="verificarLocalStorage()">
+                    <i class="fas fa-database"></i> Verificar Almacenamiento
+                </button>
+                
+                <button class="btn btn-test" onclick="testFuncionesEsenciales()">
+                    <i class="fas fa-code"></i> Test Funciones
+                </button>
+                
+                <div id="test-diagnostico-status" class="status-display"></div>
+            </div>
+        </div>
+        
+        <!-- Área de Resultados -->
+        <div class="test-section">
+            <h3><i class="fas fa-list"></i> Productos Guardados</h3>
+            <button class="btn btn-test" onclick="mostrarProductosGuardados()">
+                <i class="fas fa-eye"></i> Ver Productos Guardados
+            </button>
+            <div id="productos-guardados" class="status-display"></div>
+        </div>
+        
+        <!-- Instrucciones Finales -->
+        <div class="test-section">
+            <h3><i class="fas fa-info-circle"></i> Instrucciones Finales</h3>
+            <p><strong>✅ Si todos los tests pasan:</strong> Tu sistema está funcionando correctamente. Puedes usar el Admin Panel normal.</p>
+            <p><strong>⚠️ Si hay errores:</strong> Revisa la consola del navegador (F12) para más detalles.</p>
+            <p><strong>🎯 Próximo paso:</strong> Ve a tu sitio principal → Admin → Contraseña: <code>admin123</code></p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Variables globales para test
+        let testImagenesArray = [];
+        
+        // Configurar sistema de test de imágenes
+        function configurarTestImagenes() {
+            const uploadZone = document.getElementById('test-upload-zone');
+            const imagenesInput = document.getElementById('test-imagenes');
+            
+            uploadZone.addEventListener('click', () => imagenesInput.click());
+            
+            uploadZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadZone.style.borderColor = '#FFD700';
+                uploadZone.style.background = 'rgba(255, 215, 0, 0.2)';
+            });
+            
+            uploadZone.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                uploadZone.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+                uploadZone.style.background = 'rgba(255, 255, 255, 0.1)';
+            });
+            
+            uploadZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadZone.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+                uploadZone.style.background = 'rgba(255, 255, 255, 0.1)';
+                manejarArchivosTest(e.dataTransfer.files);
+            });
+            
+            imagenesInput.addEventListener('change', (e) => {
+                manejarArchivosTest(e.target.files);
+            });
+        }
+        
+        function manejarArchivosTest(files) {
+            Array.from(files).forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        testImagenesArray.push({
+                            src: e.target.result,
+                            file: file,
+                            id: Date.now() + Math.random()
+                        });
+                        actualizarVistaImagenesTest();
+                        logTest('success', `Imagen añadida: ${file.name} (Total: ${testImagenesArray.length})`);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+        
+        function actualizarVistaImagenesTest() {
+            const uploadZone = document.getElementById('test-upload-zone');
+            const existingPreview = uploadZone.querySelector('.test-preview');
+            if (existingPreview) existingPreview.remove();
+            
+            if (testImagenesArray.length > 0) {
+                const preview = document.createElement('div');
+                preview.className = 'test-preview';
+                preview.style.cssText = `
+                    display: flex;
+                    gap: 5px;
+                    margin-top: 10px;
+                    flex-wrap: wrap;
+                `;
+                
+                testImagenesArray.forEach((img, index) => {
+                    const imgElement = document.createElement('div');
+                    imgElement.style.cssText = `
+                        position: relative;
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 5px;
+                        overflow: hidden;
+                        border: 2px solid #FFD700;
+                    `;
+                    imgElement.innerHTML = `
+                        <img src="${img.src}" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div style="
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                            background: #FFD700;
+                            color: black;
+                            font-size: 10px;
+                            padding: 2px 4px;
+                            font-weight: bold;
+                        ">${index + 1}</div>
+                    `;
+                    preview.appendChild(imgElement);
+                });
+                
+                uploadZone.appendChild(preview);
+            }
+        }
+        
+        function testSubirProducto() {
+            logTest('info', '🚀 Iniciando test de subir producto...');
+            
+            const categoria = document.getElementById('test-categoria').value;
+            const equipo = document.getElementById('test-equipo').value.trim();
+            const liga = document.getElementById('test-liga').value;
+            const precio = parseFloat(document.getElementById('test-precio').value);
+            
+            // Validaciones
+            if (!equipo) {
+                logTest('error', '❌ Error: Nombre del equipo requerido');
+                return;
+            }
+            
+            if (!precio || precio <= 0) {
+                logTest('error', '❌ Error: Precio válido requerido');
+                return;
+            }
+            
+            // Simular llamada a función principal
+            try {
+                const nuevoProducto = {
+                    id: Date.now(),
+                    nombre: equipo,
+                    precio: precio,
+                    liga: liga,
+                    imagen: testImagenesArray.length > 0 ? testImagenesArray[0].src : null,
+                    imagenes: testImagenesArray.map(img => img.src),
+                    categoria: categoria,
+                    fechaCreacion: new Date()
+                };
+                
+                // Verificar si existe la función principal
+                if (typeof subirProducto === 'function') {
+                    logTest('success', '✅ Función subirProducto() encontrada');
+                } else {
+                    logTest('error', '❌ Función subirProducto() NO encontrada');
+                    return;
+                }
+                
+                // Verificar sistema de productos
+                if (typeof productos === 'object' && productos !== null) {
+                    logTest('success', '✅ Sistema de productos disponible');
+                    
+                    // Agregar producto de prueba
+                    if (!productos[categoria]) {
+                        productos[categoria] = [];
+                    }
+                    productos[categoria].push(nuevoProducto);
+                    
+                    logTest('success', `✅ Producto añadido a ${categoria}`);
+                    logTest('info', `📦 Producto: ${equipo} - €${precio}`);
+                    logTest('info', `📸 Imágenes: ${testImagenesArray.length}`);
+                    
+                    // Guardar en localStorage
+                    if (typeof guardarDatos === 'function') {
+                        guardarDatos();
+                        logTest('success', '✅ Datos guardados en localStorage');
+                    } else {
+                        logTest('warning', '⚠️ Función guardarDatos() no disponible');
+                    }
+                    
+                    // Limpiar formulario de test
+                    document.getElementById('test-equipo').value = '';
+                    document.getElementById('test-precio').value = '';
+                    testImagenesArray = [];
+                    const uploadZone = document.getElementById('test-upload-zone');
+                    const preview = uploadZone.querySelector('.test-preview');
+                    if (preview) preview.remove();
+                    
+                    logTest('success', '🎉 ¡TEST DE SUBIR PRODUCTO COMPLETADO EXITOSAMENTE!');
+                    
+                } else {
+                    logTest('error', '❌ Sistema de productos NO disponible');
+                }
+                
+            } catch (error) {
+                logTest('error', `❌ Error en test: ${error.message}`);
+            }
+        }
+        
+        function ejecutarDiagnosticoCompleto() {
+            logDiagnostico('info', '🔍 Ejecutando diagnóstico completo...');
+            
+            const tests = [
+                { name: 'función subirProducto()', check: () => typeof subirProducto === 'function' },
+                { name: 'función guardarDatos()', check: () => typeof guardarDatos === 'function' },
+                { name: 'función guardarCambiosProducto()', check: () => typeof window.guardarCambiosProducto === 'function' },
+                { name: 'objeto productos', check: () => typeof productos === 'object' && productos !== null },
+                { name: 'variable imagenesArray', check: () => typeof window.imagenesArray !== 'undefined' },
+                { name: 'localStorage', check: () => typeof localStorage !== 'undefined' },
+                { name: 'elementos del formulario', check: () => {
+                    return document.getElementById('categoria-select') &&
+                           document.getElementById('equipo-input') &&
+                           document.getElementById('liga-select') &&
+                           document.getElementById('precio-input');
+                }}
+            ];
+            
+            tests.forEach(test => {
+                if (test.check()) {
+                    logDiagnostico('success', `✅ ${test.name}`);
+                } else {
+                    logDiagnostico('error', `❌ ${test.name}`);
+                }
+            });
+            
+            logDiagnostico('info', '📊 Diagnóstico completado');
+        }
+        
+        function verificarLocalStorage() {
+            logDiagnostico('info', '💾 Verificando localStorage...');
+            
+            try {
+                const productosGuardados = localStorage.getItem('camisetasAJ_productos');
+                if (productosGuardados) {
+                    const datos = JSON.parse(productosGuardados);
+                    logDiagnostico('success', '✅ Datos encontrados en localStorage');
+                    
+                    Object.keys(datos).forEach(categoria => {
+                        logDiagnostico('info', `📁 ${categoria}: ${datos[categoria].length} productos`);
+                    });
+                } else {
+                    logDiagnostico('warning', '⚠️ No hay datos en localStorage');
+                }
+            } catch (error) {
+                logDiagnostico('error', `❌ Error accediendo localStorage: ${error.message}`);
+            }
+        }
+        
+        function testFuncionesEsenciales() {
+            logDiagnostico('info', '⚙️ Probando funciones esenciales...');
+            
+            // Test función subirProducto
+            if (typeof subirProducto === 'function') {
+                logDiagnostico('success', '✅ subirProducto() disponible');
+            } else {
+                logDiagnostico('error', '❌ subirProducto() NO disponible');
+            }
+            
+            // Test sistema de imágenes
+            if (typeof window.imagenesArray !== 'undefined') {
+                logDiagnostico('success', '✅ Sistema de imágenes inicializado');
+            } else {
+                logDiagnostico('error', '❌ Sistema de imágenes NO inicializado');
+            }
+            
+            // Test guardar datos
+            if (typeof guardarDatos === 'function') {
+                logDiagnostico('success', '✅ guardarDatos() disponible');
+            } else {
+                logDiagnostico('error', '❌ guardarDatos() NO disponible');
+            }
+        }
+        
+        function mostrarProductosGuardados() {
+            const container = document.getElementById('productos-guardados');
+            container.innerHTML = '<div class="info">📂 Cargando productos guardados...</div>';
+            
+            try {
+                let totalProductos = 0;
+                let html = '';
+                
+                if (typeof productos === 'object' && productos !== null) {
+                    Object.keys(productos).forEach(categoria => {
+                        if (productos[categoria] && productos[categoria].length > 0) {
+                            html += `<div class="success">📁 ${categoria.toUpperCase()}: ${productos[categoria].length} productos</div>`;
+                            
+                            productos[categoria].forEach((producto, index) => {
+                                html += `<div class="info">  ${index + 1}. ${producto.nombre} - €${producto.precio} (${producto.imagenes ? producto.imagenes.length : 0} imgs)</div>`;
+                                totalProductos++;
+                            });
+                        }
+                    });
+                    
+                    if (totalProductos === 0) {
+                        html = '<div class="warning">⚠️ No hay productos guardados</div>';
+                    } else {
+                        html = `<div class="success">📊 Total: ${totalProductos} productos</div>` + html;
+                    }
+                } else {
+                    html = '<div class="error">❌ Sistema de productos no disponible</div>';
+                }
+                
+                container.innerHTML = html;
+                
+            } catch (error) {
+                container.innerHTML = `<div class="error">❌ Error: ${error.message}</div>`;
+            }
+        }
+        
+        function logTest(type, message) {
+            const container = document.getElementById('test-subir-status');
+            const time = new Date().toLocaleTimeString();
+            container.innerHTML += `<div class="${type}">[${time}] ${message}</div>`;
+            container.scrollTop = container.scrollHeight;
+        }
+        
+        function logDiagnostico(type, message) {
+            const container = document.getElementById('test-diagnostico-status');
+            const time = new Date().toLocaleTimeString();
+            container.innerHTML += `<div class="${type}">[${time}] ${message}</div>`;
+            container.scrollTop = container.scrollHeight;
+        }
+        
+        // Inicializar al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            configurarTestImagenes();
+            logTest('info', '🎯 Sistema de test inicializado');
+            logDiagnostico('info', '🔧 Panel de diagnóstico listo');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚨 Verificación de Problemas Críticos - Debug</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .content {
+            padding: 2rem;
+        }
+        
+        .critical {
+            border-left: 4px solid #e74c3c;
+            background: linear-gradient(to right, #fff5f5, #ffffff);
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        .critical h2 {
+            color: #e74c3c;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .debug-steps {
+            list-style: none;
+        }
+        
+        .debug-steps li {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .step-number {
+            background: #e74c3c;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .code {
+            background: #f8f9fa;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            border-left: 3px solid #e74c3c;
+            margin: 0.5rem 0;
+        }
+        
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            transition: transform 0.3s ease;
+            margin: 1rem 0;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚨 Debug de Problemas Críticos</h1>
+            <p>Verificación paso a paso de las correcciones implementadas</p>
+        </div>
+        
+        <div class="content">
+            <div class="critical">
+                <h2>🔍 Debug del Botón "Subir Producto"</h2>
+                <ul class="debug-steps">
+                    <li>
+                        <div class="step-number">1</div>
+                        <div>
+                            <strong>Acceder al Admin:</strong> Hacer clic en "Admin" e ingresar contraseña "admin123"
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">2</div>
+                        <div>
+                            <strong>Abrir Consola del Navegador:</strong> Presionar F12 → Ir a "Console"
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">3</div>
+                        <div>
+                            <strong>Llenar formulario básico:</strong> Solo nombre y precio del equipo (para probar rápido)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">4</div>
+                        <div>
+                            <strong>Hacer clic en "Subir Producto"</strong> y revisar en la consola estos mensajes:
+                            <div class="code">
+                                🔥 FUNCIÓN SUBIR PRODUCTO EJECUTADA<br>
+                                Elementos encontrados: {...}<br>
+                                Valores obtenidos: {...}<br>
+                                ✅ Validaciones pasadas, creando producto...<br>
+                                Agregando producto: {...}
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">5</div>
+                        <div>
+                            <strong>Si NO aparecen estos mensajes:</strong> Significa que el botón no está ejecutando la función.
+                            <br><strong>Si SÍ aparecen:</strong> Revisar donde se detiene el proceso.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="critical">
+                <h2>🖼️ Debug del Reordenamiento de Imágenes</h2>
+                <ul class="debug-steps">
+                    <li>
+                        <div class="step-number">1</div>
+                        <div>
+                            <strong>Subir 2-3 imágenes:</strong> Usando arrastrar o hacer clic
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">2</div>
+                        <div>
+                            <strong>Intentar reordenar:</strong> Arrastrar una imagen sobre otra
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">3</div>
+                        <div>
+                            <strong>Revisar en la consola:</strong>
+                            <div class="code">
+                                🔄 Reordenando imágenes: { draggedId, targetId }<br>
+                                Índices encontrados: { draggedIndex, targetIndex }<br>
+                                Array anterior: X items<br>
+                                Array nuevo: X items
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">4</div>
+                        <div>
+                            <strong>Si aparece error:</strong> Debería ver "❌ Error en reordenamiento, restaurando array"
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="critical">
+                <h2>✏️ Debug de Editar Producto</h2>
+                <ul class="debug-steps">
+                    <li>
+                        <div class="step-number">1</div>
+                        <div>
+                            <strong>En Admin Panel:</strong> Hacer clic en "✏️ Editar" de cualquier producto
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">2</div>
+                        <div>
+                            <strong>Cambiar nombre o precio:</strong> Modificar cualquier campo
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">3</div>
+                        <div>
+                            <strong>Hacer clic en "💾 Guardar Cambios"</strong>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">4</div>
+                        <div>
+                            <strong>Verificar resultado:</strong> Debe aparecer "✅ Producto actualizado exitosamente!" y cerrarse el modal
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="critical">
+                <h2>📱 Nueva Función: Seleccionar Equipo en Personalización</h2>
+                <ul class="debug-steps">
+                    <li>
+                        <div class="step-number">1</div>
+                        <div>
+                            <strong>Ir a sección "Personalizar":</strong> Scroll hacia abajo en la página principal
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">2</div>
+                        <div>
+                            <strong>Verificar nuevo selector:</strong> Debe aparecer un dropdown "Seleccionar equipo" con opciones como FC Barcelona, Real Madrid, etc.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">3</div>
+                        <div>
+                            <strong>Llenar formulario completo:</strong> Seleccionar equipo + llenar nombre, número, talla, parche
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">4</div>
+                        <div>
+                            <strong>Hacer clic en "Solicitar por WhatsApp":</strong> El mensaje debe incluir "Equipo: [equipo seleccionado]"
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <a href="index.html" class="button">🏠 Volver a la Tienda Principal</a>
+        </div>
+    </div>
+</body>
+</html>

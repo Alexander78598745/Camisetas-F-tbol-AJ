@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camisetas AJ - Tu Tienda de Fútbol</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#FF0000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="user_input_files/LOGO TRANSPARENTE.png">
+    <link rel="icon" type="image/png" href="user_input_files/LOGO TRANSPARENTE.png">
+    <link rel="shortcut icon" href="user_input_files/LOGO TRANSPARENTE.png">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="user_input_files/LOGO TRANSPARENTE.png" alt="Camisetas AJ" class="logo-img">
+                    <span class="logo-text">Camisetas AJ</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="#ligas" class="nav-link">Ligas</a></li>
+                    <li class="nav-item"><a href="#productos" class="nav-link">Productos</a></li>
+                    <li class="nav-item"><a href="#personalizar" class="nav-link">Personalizar</a></li>
+                    <li class="nav-item"><a href="#admin" class="nav-link admin-link"><i class="fas fa-lock"></i> Admin</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">La Pasión del Fútbol<br><span class="highlight">En Cada Camiseta</span></h1>
+                <p class="hero-description">Camisetas, chándales y conjuntos de los mejores equipos del mundo. Personalización completa con nombre, número y parches.</p>
+                <div class="envio-info">
+                    <p><i class="fas fa-shipping-fast"></i> 🚚 <strong>Envío Gratuito</strong></p>
+                    <p><i class="fas fa-clock"></i> ⏱️ <strong>Entrega en 10-13 días</strong></p>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#productos" class="btn btn-primary">Ver Catálogo</a>
+                    <a href="#personalizar" class="btn btn-secondary">Personalizar</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="football-stadium-bg">
+                    <div class="logo-animation">
+                        <img src="user_input_files/LOGO TRANSPARENTE.png" alt="Camisetas AJ" class="hero-logo">
+                    </div>
+                    <div class="stadium-lights"></div>
+                    <div class="football-field"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ligas Section -->
+    <section id="ligas" class="ligas-section">
+        <div class="container">
+            <h2 class="section-title">CAMISETAS / CLUBES</h2>
+            <div class="ligas-grid">
+                <div class="liga-card" data-liga="retro">
+                    <div class="liga-logo">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Retro</h3>
+                    <p>Clásicas</p>
+                    <div class="liga-overlay">
+                        <span>Ver Equipos</span>
+                    </div>
+                </div>
+                <div class="liga-card" data-liga="laliga1">
+                    <div class="liga-logo">
+                        <img src="user_input_files/laliga_icon-1-1024x1024.png" alt="LaLiga" class="liga-icon">
+                    </div>
+                    <h3>LaLiga (1ª)</h3>
+                    <p>España</p>
+                    <div class="liga-overlay">
+                        <span>Ver Equipos</span>
+                    </div>
+                </div>
+                <div class="liga-card" data-liga="laliga2">
+                    <div class="liga-logo">
+                        <img src="user_input_files/laliga_icon-1-1024x1024 (1).png" alt="LaLiga 2" class="liga-icon">
+                    </div>
+                    <h3>LaLiga (2ª)</h3>
+                    <p>España</p>
+                    <div class="liga-overlay">
+                        <span>Ver Equipos</span>
+                    </div>
+                </div>
+                <div class="liga-card" data-liga="premier">
+                    <div class="liga-logo">
+                        <img src="user_input_files/premierleague_icon-1-1024x1024.png" alt="Premier League" class="liga-icon">
+                    </div>
+                    <h3>Premier League</h3>
+                    <p>Inglaterra</p>
+                    <div class="liga-overlay">
+                        <span>Ver Equipos</span>
+                    </div>
+                </div>
+                <div class="liga-card" data-liga="bundesliga">
+                    <div class="liga-logo">
+                        <img src="user_input_files/bundesliga-logo.jpg" alt="Bundesliga" class="liga-icon">
+                    </div>
+                    <h3>Bundesliga</h3>
+                    <p>Alemania</p>
+                    <div class="liga-overlay">
+                        <span>Ver Equipos</span>
+                    </div>
+                </div>
+                <div class="liga-card" data-liga="seriea">
+                    <div class="liga-logo">
+                        <img src="user_input_files/seriea_icon-1-1024x1024.png" alt="Serie A" class="liga-icon">
+                    </div>
+                    <h3>Serie A</h3>
+                    <p>Italia</p>
+                    <div class="liga-overlay">
+                        <span>Ver Equipos</span>
+                    </div>
+                </div>
+                <div class="liga-card" data-liga="ligue1">
+                    <div class="liga-logo">
+                        <img src="user_input_files/ligue1_newlogo-1024x1024.png" alt="Ligue 1" class="liga-icon">
+                    </div>
+                    <h3>Ligue 1</h3>
+                    <p>Francia</p>
+                    <div class="liga-overlay">
+                        <span>Ver Equipos</span>
+                    </div>
+                </div>
+                <div class="liga-card" data-liga="portuguesa">
+                    <div class="liga-logo">
+                        <img src="user_input_files/ligaportuguesa_icon-1-1024x1024.png" alt="Liga Portuguesa" class="liga-icon">
+                    </div>
+                    <h3>Liga Portuguesa</h3>
+                    <p>Portugal</p>
+                    <div class="liga-overlay">
+                        <span>Ver Equipos</span>
+                    </div>
+                </div>
+                <div class="liga-card" data-liga="mls">
+                    <div class="liga-logo">
+                        <img src="user_input_files/mls_icon-1-1024x1024.png" alt="MLS" class="liga-icon">
+                    </div>
+                    <h3>MLS</h3>
+                    <p>Estados Unidos</p>
+                    <div class="liga-overlay">
+                        <span>Ver Equipos</span>
+                    </div>
+                </div>
+                <div class="liga-card" data-liga="resto">
+                    <div class="liga-logo">
+                        <img src="user_input_files/america_icon-2-1024x1024.png" alt="Resto del Mundo" class="liga-icon">
+                    </div>
+                    <h3>Resto del Mundo</h3>
+                    <p>Internacional</p>
+                    <div class="liga-overlay">
+                        <span>Ver Equipos</span>
+                    </div>
+                </div>
+                <div class="liga-card" data-liga="selecciones">
+                    <div class="liga-logo">
+                        <img src="user_input_files/Selecciones.png" alt="Selecciones" class="liga-icon">
+                    </div>
+                    <h3>Selecciones</h3>
+                    <p>Nacionales</p>
+                    <div class="liga-overlay">
+                        <span>Ver Equipos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Últimas Novedades Section -->
+    <section id="novedades" class="novedades-section">
+        <div class="container">
+            <h2 class="section-title">🔥 Últimas Novedades</h2>
+            <p class="section-subtitle">Los productos más recientes añadidos a nuestro catálogo</p>
+            <div class="novedades-grid" id="novedadesGrid">
+                <!-- Se cargan dinámicamente los últimos productos -->
+            </div>
+            <div class="ver-mas-container">
+                <a href="#productos" class="btn btn-secondary">Ver Todo el Catálogo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section id="productos" class="productos-section">
+        <div class="container">
+            <h2 class="section-title">Equipos Destacados</h2>
+            <div class="categoria-tabs">
+                <button class="tab-btn active" data-category="camisetas">Camisetas</button>
+                <button class="tab-btn" data-category="chandales">Chándales</button>
+                <button class="tab-btn" data-category="ninos">Niños</button>
+            </div>
+            <div class="productos-grid" id="productosGrid">
+                <!-- Productos se cargan dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Personalización -->
+    <section id="personalizar" class="personalizar-section">
+        <div class="container">
+            <h2 class="section-title">Personaliza Tu Camiseta</h2>
+            <div class="personalizar-content">
+                <div class="personalizar-opciones">
+                    <div class="opcion-card">
+                        <i class="fas fa-signature"></i>
+                        <h3>Nombre</h3>
+                        <p>Agrega tu nombre o el de tu jugador favorito</p>
+                    </div>
+                    <div class="opcion-card">
+                        <i class="fas fa-hashtag"></i>
+                        <h3>Número</h3>
+                        <p>Elige el número que más te represente</p>
+                    </div>
+                    <div class="opcion-card">
+                        <i class="fas fa-certificate"></i>
+                        <h3>Parches</h3>
+                        <p>Parches oficiales de las diferentes ligas</p>
+                    </div>
+                </div>
+                <div class="personalizador">
+                    <div class="camiseta-preview">
+                        <div class="camiseta-base"></div>
+                        <div class="camiseta-nombre" id="preview-nombre">NOMBRE</div>
+                        <div class="camiseta-numero" id="preview-numero">10</div>
+                    </div>
+                    <div class="controles">
+                        <select id="input-equipo">
+                            <option value="">Seleccionar equipo</option>
+                            <!-- Se llenarán dinámicamente con los equipos existentes -->
+                        </select>
+                        <input type="text" placeholder="Nombre" id="input-nombre" maxlength="12">
+                        <input type="number" placeholder="Número" id="input-numero" min="1" max="99">
+                        <select id="input-talla">
+                            <option value="">Seleccionar talla</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="2XL">2XL</option>
+                            <option value="3XL">3XL</option>
+                        </select>
+                        <select id="input-parche">
+                            <option value="">Sin parche</option>
+                            <option value="Liga">Parche de Liga</option>
+                            <option value="Champions League">Parche Champions League</option>
+                        </select>
+                        <button class="btn btn-primary" onclick="solicitarPersonalizada()">Solicitar por WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Panel (Hidden) -->
+    <section id="admin" class="admin-section" style="display: none;">
+        <div class="container">
+            <div class="admin-header">
+                <h2 class="section-title">🔧 Panel de Administración</h2>
+                <div class="admin-stats">
+                    <div class="stat-card">
+                        <h4 id="total-productos">0</h4>
+                        <p>Productos</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4 id="total-categorias">3</h4>
+                        <p>Categorías</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4 id="total-ligas">11</h4>
+                        <p>Ligas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="admin-content">
+                <div class="admin-drawer">
+                    <div class="drawer-header">
+                        <h3>🆕 Subir Nuevos Productos</h3>
+                    </div>
+                    <div class="upload-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Categoría:</label>
+                                <select id="categoria-select" class="form-control">
+                                    <option value="camisetas">Camisetas</option>
+                                    <option value="chandales">Chándales</option>
+                                    <option value="ninos">Niños</option>
+                                </select>
+                                <button type="button" class="btn-rounded btn-add" onclick="mostrarCrearCategoria()">+ Nueva Categoría</button>
+                            </div>
+                            <div class="form-group">
+                                <label>Equipo:</label>
+                                <input type="text" id="equipo-input" placeholder="Nombre del equipo" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Liga:</label>
+                                <select id="liga-select" class="form-control">
+                                    <option value="retro">Retro</option>
+                                    <option value="laliga1">LaLiga (1ª)</option>
+                                    <option value="laliga2">LaLiga (2ª)</option>
+                                    <option value="premier">Premier League</option>
+                                    <option value="bundesliga">Bundesliga</option>
+                                    <option value="seriea">Serie A</option>
+                                    <option value="ligue1">Ligue 1</option>
+                                    <option value="portuguesa">Liga Portuguesa</option>
+                                    <option value="mls">MLS</option>
+                                    <option value="resto">Resto del Mundo</option>
+                                    <option value="selecciones">Selecciones</option>
+                                </select>
+                                <button type="button" class="btn-rounded btn-add" onclick="mostrarCrearLiga()">+ Nueva Liga</button>
+                            </div>
+                            <div class="form-group">
+                                <label>Precio:</label>
+                                <input type="number" id="precio-input" placeholder="Precio en €" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group" id="nueva-liga-group" style="display: none;">
+                            <div class="nueva-liga-form">
+                                <input type="text" id="nueva-liga-nombre" placeholder="Nombre de la liga" class="form-control">
+                                <input type="text" id="nueva-liga-pais" placeholder="País" class="form-control">
+                                <div class="liga-actions">
+                                    <button type="button" class="btn-rounded btn-success" onclick="crearNuevaLiga()">Crear</button>
+                                    <button type="button" class="btn-rounded btn-cancel" onclick="cancelarCrearLiga()">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="nueva-categoria-group" style="display: none;">
+                            <div class="nueva-categoria-form">
+                                <input type="text" id="nueva-categoria-nombre" placeholder="Nombre de la categoría" class="form-control">
+                                <div class="categoria-actions">
+                                    <button type="button" class="btn-rounded btn-success" onclick="crearNuevaCategoria()">Crear</button>
+                                    <button type="button" class="btn-rounded btn-cancel" onclick="cancelarCrearCategoria()">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Imágenes (puedes ordenarlas arrastrando):</label>
+                            <input type="file" id="imagenes-input" multiple accept="image/*" style="display: none;">
+                            <div class="upload-zone" id="uploadZone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Arrastra imágenes aquí o haz clic para seleccionar</p>
+                                <div class="imagenes-preview" id="imagenesPreview"></div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-rounded btn-primary" onclick="subirProducto()">
+                                <i class="fas fa-upload"></i> Subir Producto
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="admin-drawer">
+                    <div class="drawer-header">
+                        <h3>📦 Productos Actuales</h3>
+                        <div class="drawer-actions">
+                            <button class="btn-rounded btn-secondary" onclick="exportarProductos()">
+                                <i class="fas fa-download"></i> Exportar
+                            </button>
+                        </div>
+                    </div>
+                    <div id="lista-productos-admin" class="productos-admin-list"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float Button -->
+    <div class="whatsapp-float" onclick="abrirWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Camisetas AJ</h3>
+                    <p>La mejor calidad en camisetas de fútbol. Productos personalizados.</p>
+                    <div class="envio-footer">
+                        <p><i class="fas fa-shipping-fast"></i> 🚚 Envío Gratuito</p>
+                        <p><i class="fas fa-clock"></i> ⏱️ Entrega en 10-13 días</p>
+                        <p><i class="fas fa-shield-alt"></i> 🔒 Pago Seguro</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <div class="whatsapp-contact" onclick="abrirWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> WhatsApp: +34 643 461 840
+                    </div>
+                    <p style="margin-top: 1rem; color: #ccc;">
+                        <i class="fas fa-envelope"></i> camisetasfutbol.aj13@gmail.com
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Camisetas AJ. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

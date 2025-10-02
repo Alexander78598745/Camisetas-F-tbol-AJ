@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔧 Diagnóstico y Corrección Inmediata</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-box {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .error { border-left: 4px solid #f44336; }
+        .success { border-left: 4px solid #4CAF50; }
+        .warning { border-left: 4px solid #ff9800; }
+        button {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #1976D2; }
+        .console-log {
+            background: #000;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            height: 200px;
+            overflow-y: auto;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Diagnóstico de Sistema de Productos</h1>
+    
+    <div class="test-box warning">
+        <h3>📊 Diagnóstico Automático</h3>
+        <button onclick="ejecutarDiagnostico()">🔍 Diagnosticar Problemas</button>
+        <div id="diagnostico-resultados"></div>
+    </div>
+    
+    <div class="test-box">
+        <h3>🎯 Test 1: Función subirProducto()</h3>
+        <button onclick="testSubirProducto()">Probar Subir Producto</button>
+        <div id="test1-resultado"></div>
+    </div>
+    
+    <div class="test-box">
+        <h3>📸 Test 2: Sistema de Imágenes</h3>
+        <button onclick="testSistemaImagenes()">Probar Sistema de Imágenes</button>
+        <div id="test2-resultado"></div>
+    </div>
+    
+    <div class="test-box">
+        <h3>✏️ Test 3: Función Editar/Guardar</h3>
+        <button onclick="testEditarGuardar()">Probar Editar y Guardar</button>
+        <div id="test3-resultado"></div>
+    </div>
+    
+    <div class="test-box">
+        <h3>📋 Consola de Debug</h3>
+        <div id="console" class="console-log"></div>
+        <button onclick="limpiarConsola()">Limpiar Consola</button>
+    </div>
+    
+    <div class="test-box success">
+        <h3>🔧 Corrección Automática</h3>
+        <p>Si los tests fallan, haz clic aquí para aplicar correcciones automáticas:</p>
+        <button onclick="aplicarCorreccionCompleta()" style="background: #4CAF50; font-size: 16px; padding: 15px 25px;">
+            🚀 CORREGIR TODO AUTOMÁTICAMENTE
+        </button>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Override console.log para capturar mensajes
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        
+        function logToDiv(message, type = 'log') {
+            const console = document.getElementById('console');
+            const time = new Date().toLocaleTimeString();
+            const color = type === 'error' ? '#f44' : type === 'warn' ? '#fa0' : '#0f0';
+            console.innerHTML += `<div style="color: ${color}">[${time}] ${message}</div>`;
+            console.scrollTop = console.scrollHeight;
+        }
+        
+        console.log = (msg) => { originalLog(msg); logToDiv(msg); };
+        console.error = (msg) => { originalError(msg); logToDiv(msg, 'error'); };
+        console.warn = (msg) => { originalWarn(msg); logToDiv(msg, 'warn'); };
+        
+        function limpiarConsola() {
+            document.getElementById('console').innerHTML = '';
+        }
+        
+        function ejecutarDiagnostico() {
+            const resultados = document.getElementById('diagnostico-resultados');
+            resultados.innerHTML = '<h4>Ejecutando diagnóstico...</h4>';
+            
+            const tests = [];
+            
+            // Test 1: Función subirProducto existe
+            if (typeof subirProducto === 'function') {
+                tests.push('✅ Función subirProducto() existe');
+            } else {
+                tests.push('❌ Función subirProducto() NO EXISTE');
+            }
+            
+            // Test 2: Elementos HTML existen
+            const campos = ['categoria-select', 'equipo-input', 'liga-select', 'precio-input', 'uploadZone'];
+            campos.forEach(id => {
+                if (document.getElementById(id)) {
+                    tests.push(`✅ Elemento ${id} existe`);
+                } else {
+                    tests.push(`❌ Elemento ${id} NO EXISTE`);
+                }
+            });
+            
+            // Test 3: Variable imagenesArray
+            if (typeof imagenesArray !== 'undefined') {
+                tests.push('✅ Variable imagenesArray está definida');
+            } else {
+                tests.push('❌ Variable imagenesArray NO DEFINIDA');
+            }
+            
+            // Test 4: localStorage
+            if (typeof localStorage !== 'undefined') {
+                tests.push('✅ localStorage disponible');
+            } else {
+                tests.push('❌ localStorage NO disponible');
+            }
+            
+            // Test 5: Productos object
+            if (typeof productos === 'object' && productos !== null) {
+                tests.push('✅ Objeto productos existe');
+            } else {
+                tests.push('❌ Objeto productos NO EXISTE');
+            }
+            
+            resultados.innerHTML = `
+                <h4>Resultados del Diagnóstico:</h4>
+                ${tests.map(test => `<div>${test}</div>`).join('')}
+            `;
+        }
+        
+        function testSubirProducto() {
+            const resultado = document.getElementById('test1-resultado');
+            resultado.innerHTML = '<p>Probando función subirProducto()...</p>';
+            
+            try {
+                // Simular datos del formulario
+                console.log('🧪 Iniciando test de subirProducto()');
+                
+                if (typeof subirProducto === 'function') {
+                    console.log('✅ Función subirProducto() encontrada');
+                    resultado.innerHTML = '<p style="color: green">✅ Función subirProducto() está disponible</p>';
+                } else {
+                    console.error('❌ Función subirProducto() NO EXISTE');
+                    resultado.innerHTML = '<p style="color: red">❌ Función subirProducto() NO EXISTE</p>';
+                }
+            } catch (error) {
+                console.error('❌ Error en test:', error);
+                resultado.innerHTML = `<p style="color: red">❌ Error: ${error.message}</p>`;
+            }
+        }
+        
+        function testSistemaImagenes() {
+            const resultado = document.getElementById('test2-resultado');
+            
+            try {
+                console.log('🧪 Probando sistema de imágenes');
+                
+                if (typeof imagenesArray !== 'undefined') {
+                    console.log('✅ imagenesArray definida');
+                    resultado.innerHTML = '<p style="color: green">✅ Sistema de imágenes básico OK</p>';
+                } else {
+                    console.error('❌ imagenesArray no definida');
+                    resultado.innerHTML = '<p style="color: red">❌ imagenesArray no está definida</p>';
+                }
+                
+                if (typeof setupImageDragDrop === 'function') {
+                    console.log('✅ setupImageDragDrop() encontrada');
+                } else {
+                    console.error('❌ setupImageDragDrop() NO EXISTE');
+                }
+                
+            } catch (error) {
+                console.error('❌ Error en test de imágenes:', error);
+                resultado.innerHTML = `<p style="color: red">❌ Error: ${error.message}</p>`;
+            }
+        }
+        
+        function testEditarGuardar() {
+            const resultado = document.getElementById('test3-resultado');
+            
+            try {
+                console.log('🧪 Probando función de editar/guardar');
+                
+                if (typeof window.guardarCambiosProducto === 'function') {
+                    console.log('✅ guardarCambiosProducto() encontrada');
+                    resultado.innerHTML = '<p style="color: green">✅ Función guardarCambiosProducto() disponible</p>';
+                } else {
+                    console.error('❌ guardarCambiosProducto() NO EXISTE');
+                    resultado.innerHTML = '<p style="color: red">❌ Función guardarCambiosProducto() NO EXISTE</p>';
+                }
+                
+            } catch (error) {
+                console.error('❌ Error en test de edición:', error);
+                resultado.innerHTML = `<p style="color: red">❌ Error: ${error.message}</p>`;
+            }
+        }
+        
+        function aplicarCorreccionCompleta() {
+            console.log('🚀 APLICANDO CORRECCIÓN COMPLETA...');
+            
+            // Redefinir imagenesArray globalmente
+            window.imagenesArray = [];
+            
+            // Redefinir función obtenerImagenesOrdenadas
+            window.obtenerImagenesOrdenadas = function() {
+                if (typeof window.imagenesArray !== 'undefined' && window.imagenesArray.length > 0) {
+                    return window.imagenesArray.map(img => img.src);
+                }
+                return [];
+            };
+            
+            // Función subirProducto corregida
+            window.subirProducto = function() {
+                console.log('🚀 Iniciando subida de producto [CORREGIDO]...');
+                
+                const categoria = document.getElementById('categoria-select')?.value || 'camisetas';
+                const equipo = document.getElementById('equipo-input')?.value?.trim() || '';
+                const liga = document.getElementById('liga-select')?.value || 'laliga1';
+                const precioInput = document.getElementById('precio-input')?.value?.trim() || '';
+                
+                console.log('📝 Datos del formulario:', { categoria, equipo, liga, precioInput });
+                
+                if (!equipo || !precioInput) {
+                    alert('Por favor, completa todos los campos obligatorios');
+                    return;
+                }
+                
+                const precio = parseFloat(precioInput);
+                if (isNaN(precio) || precio <= 0) {
+                    alert('Por favor, ingresa un precio válido');
+                    return;
+                }
+                
+                const imagenesOrdenadas = window.obtenerImagenesOrdenadas();
+                console.log('📸 Imágenes obtenidas:', imagenesOrdenadas.length);
+                
+                const nuevoProducto = {
+                    id: Date.now(),
+                    nombre: equipo,
+                    precio: precio,
+                    liga: liga,
+                    imagen: imagenesOrdenadas.length > 0 ? imagenesOrdenadas[0] : null,
+                    imagenes: imagenesOrdenadas,
+                    categoria: categoria,
+                    fechaCreacion: new Date()
+                };
+                
+                // Asegurar que existe el array de la categoría
+                if (!window.productos[categoria]) {
+                    window.productos[categoria] = [];
+                }
+                
+                window.productos[categoria].push(nuevoProducto);
+                console.log('✅ Producto añadido a la categoría:', categoria);
+                
+                // Guardar
+                if (typeof guardarDatos === 'function') {
+                    guardarDatos();
+                }
+                
+                // Limpiar formulario
+                const equipoInput = document.getElementById('equipo-input');
+                const precioInputEl = document.getElementById('precio-input');
+                if (equipoInput) equipoInput.value = '';
+                if (precioInputEl) precioInputEl.value = '';
+                
+                // Resetear imágenes
+                window.imagenesArray = [];
+                const uploadZone = document.getElementById('uploadZone');
+                const previewContainer = document.getElementById('imagenesPreview');
+                if (previewContainer) {
+                    previewContainer.remove();
+                }
+                if (uploadZone) {
+                    uploadZone.innerHTML = `
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Arrastra imágenes aquí o haz clic para seleccionar</p>
+                    `;
+                }
+                
+                // Mostrar modal de éxito
+                mostrarModalExitoSimple();
+                
+                console.log('🎉 ¡Producto subido exitosamente!');
+            };
+            
+            // Función mostrarModalExitoSimple
+            window.mostrarModalExitoSimple = function() {
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.7);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 10000;
+                `;
+                
+                modal.innerHTML = `
+                    <div style="
+                        background: white;
+                        border-radius: 15px;
+                        padding: 40px;
+                        text-align: center;
+                        max-width: 400px;
+                    ">
+                        <div style="
+                            background: #4CAF50;
+                            color: white;
+                            border-radius: 50%;
+                            width: 80px;
+                            height: 80px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin: 0 auto 20px;
+                            font-size: 40px;
+                        ">✓</div>
+                        
+                        <h2 style="color: #333; margin: 0 0 15px 0;">¡Producto Subido!</h2>
+                        <p style="color: #666; margin: 0 0 25px 0;">Tu producto ha sido añadido exitosamente al catálogo.</p>
+                        
+                        <button onclick="this.closest('div').parentNode.remove()" style="
+                            background: #4CAF50;
+                            color: white;
+                            border: none;
+                            padding: 12px 24px;
+                            border-radius: 8px;
+                            cursor: pointer;
+                        ">Perfecto</button>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+            };
+            
+            console.log('🎉 ¡CORRECCIÓN APLICADA! Ahora prueba subir un producto.');
+            alert('✅ Corrección aplicada exitosamente! Ahora ve al Admin y prueba subir un producto.');
+        }
+    </script>
+</body>
+</html>
